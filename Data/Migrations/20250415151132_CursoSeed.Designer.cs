@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using POWApp.Data;
 
@@ -11,9 +12,11 @@ using POWApp.Data;
 namespace POWApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250415151132_CursoSeed")]
+    partial class CursoSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,7 +162,7 @@ namespace POWApp.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("POWApp.Models.ApplicationUser", b =>
+            modelBuilder.Entity("POWApp.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -224,7 +227,7 @@ namespace POWApp.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("POWApp.Models.Curso", b =>
+            modelBuilder.Entity("POWApp.Entities.Curso", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -255,21 +258,21 @@ namespace POWApp.Data.Migrations
                         {
                             Id = 1,
                             Descripcion = "Aprende los fundamentos de C#",
-                            FechaCreacion = new DateTime(2025, 4, 16, 14, 52, 7, 565, DateTimeKind.Local).AddTicks(3066),
+                            FechaCreacion = new DateTime(2025, 4, 15, 10, 11, 27, 622, DateTimeKind.Local).AddTicks(6769),
                             Nombre = "C# Básico"
                         },
                         new
                         {
                             Id = 2,
                             Descripcion = "Desarrollo de aplicaciones web con ASP.NET",
-                            FechaCreacion = new DateTime(2025, 4, 16, 14, 52, 7, 565, DateTimeKind.Local).AddTicks(3107),
+                            FechaCreacion = new DateTime(2025, 4, 15, 10, 11, 27, 622, DateTimeKind.Local).AddTicks(6787),
                             Nombre = "ASP.NET MVC"
                         },
                         new
                         {
                             Id = 3,
                             Descripcion = "Consulta y diseño de bases de datos",
-                            FechaCreacion = new DateTime(2025, 4, 16, 14, 52, 7, 565, DateTimeKind.Local).AddTicks(3111),
+                            FechaCreacion = new DateTime(2025, 4, 15, 10, 11, 27, 622, DateTimeKind.Local).AddTicks(6789),
                             Nombre = "SQL Server"
                         });
                 });
@@ -285,7 +288,7 @@ namespace POWApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("POWApp.Models.ApplicationUser", null)
+                    b.HasOne("POWApp.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -294,7 +297,7 @@ namespace POWApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("POWApp.Models.ApplicationUser", null)
+                    b.HasOne("POWApp.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -309,7 +312,7 @@ namespace POWApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("POWApp.Models.ApplicationUser", null)
+                    b.HasOne("POWApp.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -318,7 +321,7 @@ namespace POWApp.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("POWApp.Models.ApplicationUser", null)
+                    b.HasOne("POWApp.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

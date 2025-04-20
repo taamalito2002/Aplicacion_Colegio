@@ -1,0 +1,47 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Crear una nueva cuenta";
+}
+
+<h2>Crear una nueva cuenta</h2>
+
+<!-- Contenedor para limitar el ancho y alineado a la izquierda -->
+<div class="container" style="max-width: 500px; margin-left: 0;">
+
+    <form method="post" class="form-signin">
+        <div class="form-group">
+            <label for="Email">Correo Electrónico</label>
+            <input type="email" class="form-control" id="Email" name="Email" asp-for="Input.Email" required />
+            <span class="text-danger" asp-validation-for="Input.Email"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="Password">Contraseña</label>
+            <input type="password" class="form-control" id="Password" name="Password" asp-for="Input.Password" required />
+            <span class="text-danger" asp-validation-for="Input.Password"></span>
+            <small class="form-text text-muted">La contraseña debe tener al menos 6 caracteres.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="ConfirmPassword">Confirmar Contraseña</label>
+            <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" asp-for="Input.ConfirmPassword" required />
+            <span class="text-danger" asp-validation-for="Input.ConfirmPassword"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+        </div>
+    </form>
+
+    <div class="form-footer text-center mt-3">
+        <p>¿Ya tienes una cuenta? <a href="@Url.Page("/Account/Login")">Inicia sesión</a></p>
+        <p><a href="#">Usar otro servicio para registrarse</a></p>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

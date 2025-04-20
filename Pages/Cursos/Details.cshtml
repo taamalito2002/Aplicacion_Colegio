@@ -1,0 +1,32 @@
+﻿@page
+@model POWApp.Pages.Cursos.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalles del Curso";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Curso</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Model.Curso.Id</dd>
+
+        <dt class="col-sm-2">Nombre</dt>
+        <dd class="col-sm-10">@Model.Curso.Nombre</dd>
+
+        <dt class="col-sm-2">Descripción</dt>
+        <dd class="col-sm-10">@Model.Curso.Descripcion</dd>
+
+        <dt class="col-sm-2">Profesor ID</dt>
+        <dd class="col-sm-10">@Model.Curso.ProfesorId</dd>
+
+        <dt class="col-sm-2">Fecha de Creación</dt>
+        <dd class="col-sm-10">@Model.Curso.FechaCreacion.ToString("dd/MM/yyyy")</dd>
+    </dl>
+
+
+    <a class="btn btn-primary" asp-page="./Index">Volver a la lista</a>
+</div>

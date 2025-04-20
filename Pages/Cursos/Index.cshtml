@@ -1,5 +1,8 @@
 ﻿@page
 @model POWApp.Pages.Cursos.IndexModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<POWApp.Models.ApplicationUser> UserManager
+@inject SignInManager<POWApp.Models.ApplicationUser> SignInManager
 
 @{
     ViewData["Title"] = "Lista de Cursos";
@@ -7,8 +10,30 @@
 
 <h1>@ViewData["Title"]</h1>
 
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>Has iniciado sesión como: <strong>@User.Identity.Name</strong></p>
+
+    @if (User.IsInRole("Administrador"))
+    {
+        <button class="btn btn-danger">Botón de Administrador</button>
+    }
+    else if (User.IsInRole("Profesor"))
+    {
+        <button class="btn btn-primary">Botón de Profesor</button>
+    }
+    else if (User.IsInRole("Estudiante"))
+    {
+        <button class="btn btn-success">Botón de Estudiante</button>
+    }
+}
+else
+{
+    <p>No has iniciado sesión.</p>
+}
+
 <p>
-    <a class="btn btn-primary" asp-page="Create">Agregar Nuevo Curso</a>
+    <a class="btn btn-primary" asp-page="/Cursos/Create">Agregar Nuevo Curso</a>
 </p>
 
 <table class="table table-striped">
@@ -31,7 +56,6 @@
                     <a class="btn btn-sm btn-warning" asp-page="/Cursos/Edit" asp-route-id="@item.Id">Editar</a>
                     <a class="btn btn-sm btn-info" asp-page="/Cursos/Details" asp-route-id="@item.Id">Detalles</a>
                     <a class="btn btn-sm btn-danger" asp-page="/Cursos/Delete" asp-route-id="@item.Id">Eliminar</a>
-
                 </td>
             </tr>
         }

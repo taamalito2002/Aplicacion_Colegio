@@ -1,0 +1,26 @@
+﻿@page
+@model POWApp.Pages.AdminUsuarios.IndexModel
+
+@{
+    ViewData["Title"] = "Lista de Usuarios";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Usuario</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Usuarios)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.UserName</td>
+            </tr>
+        }
+    </tbody>
+</table>

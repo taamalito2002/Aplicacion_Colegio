@@ -1,0 +1,52 @@
+﻿@page
+@model POWApp.Pages.Cursos.EditModel
+
+@{
+    ViewData["Title"] = "Editar Curso";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Curso</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Curso.Id" />
+            <div class="form-group">
+                <label asp-for="Curso.Nombre" class="control-label"></label>
+                <input asp-for="Curso.Nombre" class="form-control" />
+                <span asp-validation-for="Curso.Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Curso.Descripcion" class="control-label"></label>
+                <input asp-for="Curso.Descripcion" class="form-control" />
+                <span asp-validation-for="Curso.Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Curso.ProfesorId" class="control-label"></label>
+                <input asp-for="Curso.ProfesorId" class="form-control" />
+                <span asp-validation-for="Curso.ProfesorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Curso.FechaCreacion" class="control-label"></label>
+                <input asp-for="Curso.FechaCreacion" class="form-control" />
+                <span asp-validation-for="Curso.FechaCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
